@@ -6,8 +6,8 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: moonlit/laravel-api
-    container_name: moonlit-api
+    image: moonlit/laravel
+    container_name: moonlit
     working_dir: /var/www/
     volumes:
       - ./:/var/www/

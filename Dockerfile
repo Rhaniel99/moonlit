@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
+    build-essential \
     nodejs \
+    npm \
     libpq-dev \
     libzip-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -29,7 +31,6 @@ RUN pecl install -o -f redis && docker-php-ext-enable redis
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-    
 RUN useradd -G www-data,root -u $uid -d /home/$user $user \
     && mkdir -p /home/$user/.composer \
     && chown -R $user:$user /home/$user
